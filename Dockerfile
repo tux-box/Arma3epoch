@@ -1,7 +1,7 @@
 FROM steamcmd/steamcmd:latest
 #sets up and installs a steam dedicated server
 
-MAINTAINER tux-box <nathan.flow@gmail.com>
+MAINTAINER tux-box
 
 ###From steamcmd/steamcmd container
 #ENV HOME=/root #steamCMD env 
@@ -47,14 +47,13 @@ ENV SERVERMODS=@epochhive
 
 WORKDIR /
 
-RUN apt-get update && \
-apt-get install git nano wget curl -y && \
-apt-get clean && apt-get autoremove && \
-rm -rf /var/lib/apt/lists/* && \
-rm -r -f /src && \
-git clone https://github.com/tux-box/arma3epoch.git /src && \
-chmod -R 770 /src/scripts && \
-ulimit -n 2048
+RUN <<EOF
+apt-get update -y
+apt-get install curl git nano wget -y
+apt-get clean -y
+apt-get autoremove -y
+rm -rf /var/lib/apt/lists/*
+EOF
 
 #Server Start
-ENTRYPOINT ["/src/scripts/processWork.sh"]
+#ENTRYPOINT ["/src/scripts/processWork.sh"]
