@@ -5,14 +5,17 @@
 # epoch mod ID=421839251
 
 #cleaning up space for install
-rm -r ${FORCE_INSTALL_DIR}/steamapps
+#rm -r ${FORCE_INSTALL_DIR}/steamapps
 
 DESKTOP_ARMA_ID="107410"
 SERVER_ARMA_ID="233780" #current ${GAME_ID} 
 MOD_ID="421839251"
 MOD_NAME="@epoch"
 
+#use one or the other not both. Comment out with # the one you are not using.
 APP_UPDATE=${DESKTOP_ARMA_ID}
+#or
+#APP_UPDATE=${SERVER_ARMA_ID}
 
 ${STEAMCMD_DIR}/steamcmd \
 +force_install_dir ${FORCE_INSTALL_DIR} \
@@ -21,4 +24,4 @@ ${STEAMCMD_DIR}/steamcmd \
 +quit
 
 #cleaning up space for more installs
-rm -r ${FORCE_INSTALL_DIR}/steamapps
+#rm -r ${FORCE_INSTALL_DIR}/steamapps

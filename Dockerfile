@@ -23,6 +23,7 @@ ENV STEAM_CACHE=$HOME/cache
 #ENV STEAMCMD_DIR=
 ENV SOURCE=$HOME/source
 
+#get the latest sources
 RUN git clone https://github.com/tux-box/Arma3epoch.git $HOME/source
 RUN find $HOME/source/scripts -type f -exec chmod +x {} \;
 #RUN chmod +x -R $HOME/source/scripts
@@ -30,8 +31,11 @@ RUN find $HOME/source/scripts -type f -exec chmod +x {} \;
 #install arma dedicated server
 #or
 #install arma desktop version?
+RUN !/bin/bash $HOME/source/scripts/steam/getArma3server.sh
 
+#get epoch server
+RUN !/bin/bash $HOME/source/scripts/getEpochServer.sh
 
-
+#get all mods
 #this needs to be run at container run time not build time.
 RUN !/bin/bash $HOME/source/scripts/steam/installModsByCSV.sh
