@@ -15,9 +15,15 @@ WORKDIR $HOME
 #copy scripts to local system using git, do they exist?
 #
 
+RUN mkdir ~/cache
+RUN mkdir ~/scripts
+RUN mkdir ~/a3epoch
+
 ENV STEAMCMD_DIR=/home/steam/cache
 ENV STEAM_CMD_USERNAME=anonymous
 ENV STEAM_CMD_PASSWRD=anonymous
 ENV FORCE_INSTALL_DIR=/home/steam/a3epoch
 
 RUN git clone https://github.com/tux-box/Arma3epoch.git /home/steam/scripts
+
+RUN !/bin/bash /home/steam/scripts/installModsByCSV.sh
