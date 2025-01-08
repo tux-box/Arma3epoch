@@ -3,7 +3,8 @@
 APP_UPDATE="107410"
 
 while IFS=';' read -r mod_ID mod_Name; do
- ./steamcmd \
+ steamcmd \
+ +@sSteamCmdForcePlatformType windows \
  +login ${STEAM_CMD_USERNAME} ${STEAM_CMD_PASSWRD} \
  +app_update ${APP_UPDATE} \
  +workshop_download_item ${APP_UPDATE} ${MOD_ID} validate \
