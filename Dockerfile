@@ -27,5 +27,11 @@ RUN git clone https://github.com/tux-box/Arma3epoch.git $HOME/source
 RUN find $HOME/source/scripts -type f -exec chmod +x {} \;
 #RUN chmod +x -R $HOME/source/scripts
 
+#install arma dedicated server
+#or
+#install arma desktop version?
+
+
+
+#this needs to be run at container run time not build time.
 RUN !/bin/bash $HOME/source/scripts/steam/installModsByCSV.sh
-RUN ls -la /home/steam
