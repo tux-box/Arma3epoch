@@ -20,4 +20,4 @@ ENV STEAM_CMD_USERNAME=anonymous
 ENV STEAM_CMD_PASSWRD=anonymous
 ENV FORCE_INSTALL_DIR=/home/steam/a3epoch
 
-git clone 
+RUN git clone https://github.com/tux-box/Arma3epoch.git /home/steam/scripts
