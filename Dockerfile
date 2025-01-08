@@ -1,59 +1,23 @@
-FROM steamcmd/steamcmd:latest
-#sets up and installs a steam dedicated server
+######## INSTALL ########
 
-MAINTAINER tux-box
+# Set the base image
+FROM tuxbox1/steamcmd:latest
 
-###From steamcmd/steamcmd container
-#ENV HOME=/root #steamCMD env 
-#ENV USER=root #steamCMD env
+# Set environment variables
+ENV USER steam
+ENV HOME /home/steam
 
-### Default container
-ENV DATA_DIR="/serverdata"
+# Set working directory
+WORKDIR $HOME
 
-### Filesystem 
-ENV UMASK=000
-ENV UID=99
-ENV GID=100
-ENV USER="steam"
-ENV DATA_PERM=770
+#todo
+#setup local system
+#copy scripts to local system using git, do they exist?
+#
 
-### Networking
-ENV PORT=27015
+ENV STEAMCMD_DIR=/home/steam/cache
+ENV STEAM_CMD_USERNAME=anonymous
+ENV STEAM_CMD_PASSWRD=anonymous
+ENV FORCE_INSTALL_DIR=/home/steam/a3epoch
 
-###SteamCMD info
-### Creds
-ENV USERNAME=""
-ENV PASSWRD=""
-### SteamCMD configuration
-ENV STEAMCMD_DIR="/usr/games"
-ENV FORCE_INSTALL_DIR=${DATA_DIR}/serverfiles
-ENV APP_UPDATE="template"
-ENV WORKSHOP_DOWNLOAD_ITEM="template"
-ENV VALIDATE="true"
-
-###For personalization
-ENV SERVER_NAME=DockerEpoch
-ENV SERVER_PASSWRD=Docker
-ENV ADMIN_PASSWRD=EpochDocker
-ENV ADMIN_ARRAY={"76561197991069479","Mr.120"}
-ENV REDIS_IP=127.0.0.1
-
-###For epoch_linux_startscript.sh
-ENV NAME=SC
-ENV DELDAYS=7
-ENV OTHERPARAMS="-maxMem=2047 -nosound -exthreads=1 -noCB -autoinit -loadMissionToMemory"
-ENV MODS=@epoch
-ENV SERVERMODS=@epochhive
-
-WORKDIR /
-
-RUN <<EOF
-apt-get update -y
-apt-get install curl git nano wget -y
-apt-get clean -y
-apt-get autoremove -y
-rm -rf /var/lib/apt/lists/*
-EOF
-
-#Server Start
-#ENTRYPOINT ["/src/scripts/processWork.sh"]
+git clone 

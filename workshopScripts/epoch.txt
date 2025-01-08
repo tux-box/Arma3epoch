@@ -1,0 +1,18 @@
+APP_UPDATE="107410"
+WORKSHOP_DOWNLOAD_ITEM="421839251"
+MOD_NAME="@epoch"
+
+steamcmd +force_install_dir /home/steam/cache/epoch +login ${STEAM_USER_NAME} ${STEAM_USER_PASSWORD} +app_update 107410 +workshop_download_item 107410 421839251 validate +quit
+echo ---Creating Symbolic link for @epoch----
+ln -s  /home/steam/cache/epoch/workshop/421839251 /home/steam/a3/@epoch
+
+// update_csgo_ds.txt
+//
+@ShutdownOnFailedCommand 1 //set to 0 if updating multiple servers at once
+@NoPromptForPassword 1
+force_install_dir /home/steam/cache/epoch
+login <username> <password>
+//for servers which don't need a login
+//login anonymous 
+app_update 740 validate
+quit
