@@ -10,27 +10,22 @@ ENV HOME=/home/steam
 # Set working directory
 WORKDIR $HOME
 
-#todo
-#setup local system
-#copy scripts to local system using git, do they exist?
-#
+RUN mkdir $HOME/cache
+RUN mkdir $HOME/scripts
+RUN mkdir $HOME/a3epoch
 
-RUN mkdir ~/cache
-RUN mkdir ~/scripts
-RUN mkdir ~/a3epoch
-
-ENV STEAMCACHE_DIR=/home/steam/cache
 ENV STEAM_CMD_USERNAME=anonymous
 ENV STEAM_CMD_PASSWRD=anonymous
-ENV FORCE_INSTALL_DIR=/home/steam/a3epoch
-ENV STEAM_CACHE=/home/steam/cache
-ENV STEAMCMD_DIR=
 
+ENV STEAMCACHE_DIR=$HOME/cache
+ENV FORCE_INSTALL_DIR=$HOME/a3epoch
+ENV STEAM_CACHE=$HOME/cache
+#ENV STEAMCMD_DIR=
+ENV SOURCE=$HOME/source
 
+RUN git clone https://github.com/tux-box/Arma3epoch.git $HOME/source
+RUN find $HOME/source/scripts -type f -exec chmod +x {} \;
+#RUN chmod +x -R $HOME/source/scripts
 
-RUN git clone https://github.com/tux-box/Arma3epoch.git /home/steam/scripts
-RUN find /home/steam/scripts -type f -exec chmod +x {} \;
-RUN chmod +x -R /home/steam/scripts
-
-RUN !/bin/bash /home/steam/scripts/workshopScripts/installModsByCSV.sh
+RUN !/bin/bash $HOME/source/scripts/steam/installModsByCSV.sh
 RUN ls -la /home/steam
