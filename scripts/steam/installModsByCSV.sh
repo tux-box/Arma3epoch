@@ -3,7 +3,10 @@
 WORKSHOP_ID="107410"
 
 while IFS=';' read -r MOD_ID MOD_NAME; do
- export 
+  # Skip the header line (optional, depending on your needs)
+  if [[ "$MOD_ID" == "MOD_ID" ]]; then
+    continue
+  fi
  printf "\n"
  steamcmd \
  +@sSteamCmdForcePlatformType windows \
