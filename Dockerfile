@@ -19,10 +19,14 @@ RUN mkdir ~/cache
 RUN mkdir ~/scripts
 RUN mkdir ~/a3epoch
 
-ENV STEAMCMD_DIR=/home/steam/cache
+ENV STEAMCACHE_DIR=/home/steam/cache
 ENV STEAM_CMD_USERNAME=anonymous
 ENV STEAM_CMD_PASSWRD=anonymous
 ENV FORCE_INSTALL_DIR=/home/steam/a3epoch
+ENV STEAM_CACHE=/home/steam/cache
+ENV STEAMCMD_DIR=
+
+
 
 RUN git clone https://github.com/tux-box/Arma3epoch.git /home/steam/scripts
 RUN find /home/steam/scripts -type f -exec chmod +x {} \;
