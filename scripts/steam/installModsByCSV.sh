@@ -12,7 +12,7 @@ while IFS=';' read -r MOD_ID MOD_NAME; do
  +@sSteamCmdForcePlatformType windows \
  +login ${STEAM_CMD_USERNAME} ${STEAM_CMD_PASSWRD} \
  +app_update ${WORKSHOP_ID} \
- +workshop_download_item ${APP_UPDATE} ${MOD_ID} validate \
+ +workshop_download_item ${WORKSHOP_ID} ${MOD_ID} validate \
  +quit
  echo ---Creating Symbolic link for $MOD_NAME
  ln -s  ${STEAM_CACHE}/steamapps/workshop/${MOD_ID} ${FORCE_INSTALL_DIR}/${MOD_NAME}
