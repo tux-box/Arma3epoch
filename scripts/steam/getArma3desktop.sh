@@ -12,11 +12,12 @@ SERVER_ARMA_ID="233780" #current ${GAME_ID}
 MOD_ID="421839251"
 
 #use one or the other not both. Comment out with # the one you are not using.
-#APP_UPDATE=${DESKTOP_ARMA_ID} #will need +@sSteamCmdForcePlatformType windows
+APP_UPDATE=${DESKTOP_ARMA_ID} #will need +@sSteamCmdForcePlatformType windows
 #or
-APP_UPDATE=${SERVER_ARMA_ID}
+#APP_UPDATE=${SERVER_ARMA_ID}
 
 steamcmd \
++@sSteamCmdForcePlatformType windows \
 +force_install_dir ${FORCE_INSTALL_DIR} \
 +login ${STEAM_CMD_USERNAME} ${STEAM_CMD_PASSWRD} \
 +app_update ${APP_UPDATE} validate \
