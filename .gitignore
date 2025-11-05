@@ -1,0 +1,4 @@
+# Ignore secrets
+#secrets.env
+#login_info.txt
+#config/private.yaml
