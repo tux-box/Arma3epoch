@@ -6,9 +6,9 @@ source "$(dirname "$0")/config.env"
 source "$(dirname "$0")/secrets.env"
 
 # ================= CONFIGURATION =================
-HTML_FILE="$INSTALL_DIR/mods.html"          # Path to your HTML file
-STEAMCMD="$HOME/steamcmd/steamcmd.sh"       # Path to steamcmd
-STEAMid="anonymous"                      # Steam username (or your account)
+HTML_FILE="epochModList.html"          # Path to your HTML file
+STEAMCMD="/usr/games/steamcmd"              # Path to steamcmd
+# Steam username and password defined in secrets.env 
 # SteamCMD install directory defined in config.env
 APP_ID=107410                                # Arma 3 AppID
 # =================================================
