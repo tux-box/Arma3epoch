@@ -5,7 +5,11 @@
 dpkg --add-architecture i386
 add-apt-repository multiverse
 apt-get update && apt-get dist-upgrade -y
+#by running my script you agree to the Steam agreement, not me. You are responcable not me!
+echo steam steam/question select "I AGREE" | sudo debconf-set-selections
+echo steam steam/license note '' | sudo debconf-set-selections
 apt-get install -y nano openssh-server software-properties-common git steamcmd
 
 ssh-keygen -q -t rsa -N '' <<< $'\ny' >/dev/null 2>&1
-curl https://github.com/tux-box.keys >> ~/.ssh/authorized_keys
+#>> is append, > is overwrite
+curl https://github.com/tux-box.keys > ~/.ssh/authorized_keys
