@@ -42,23 +42,23 @@ for mod in "${mods[@]}"; do
     echo -e "\n=== Processing: $mod_name ($mod_id) ==="
 
     # Download using SteamCMD
-    "$STEAMCMD" +force_install_dir "$FORCE_INSTALL_DIR" +login "$STEAM_USER" +workshop_download_item "$APP_ID" "$mod_id" +quit
-
-    mod_folder="$FORCE_INSTALL_DIR/steamapps/workshop/content/$APP_ID/$mod_id"
+    "$STEAMCMD" +@sSteamCmdForcePlatformType windows +force_install_dir "$INSTALL_DIR" +login "$STEAMid" "$STEAMpass" +workshop_download_item "$APP_ID" "$mod_id" +quit
+    
+    mod_folder="$INSTALL_DIR/steamapps/workshop/content/$APP_ID/$mod_id"
     if [ ! -d "$mod_folder" ]; then
-        echo "⚠️  Mod folder not found for $mod_id. Skipping."
+        echo "Mod folder not found for $mod_id. Skipping."
         continue
     fi
 
     # Create symlink
-    link_name="$FORCE_INSTALL_DIR/$(clean_name "$mod_name")"
+    link_name="$INSTALL_DIR/$(clean_name "$mod_name")"
     if [ -e "$link_name" ]; then
         echo "Skipping existing link: $link_name"
         continue
     fi
 
     ln -s "$mod_folder" "$link_name"
-    echo "✅ Created symlink: $link_name -> $mod_folder"
+    echo "Created symlink: $link_name -> $mod_folder"
 done
 
 echo -e "\nAll mods processed successfully."

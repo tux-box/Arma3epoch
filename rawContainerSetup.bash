@@ -17,7 +17,7 @@ echo steam steam/question select "I AGREE" | sudo debconf-set-selections
 echo steam steam/license note '' | sudo debconf-set-selections
 
 echo "installing pre-requesits"
-apt-get install -y nano openssh-server software-properties-common git steamcmd lib32gcc-s1 libstdc++6:i386 lib32stdc++6
+apt-get install -y nano openssh-server software-properties-common git steamcmd lib32gcc-s1 libstdc++6:i386 lib32stdc++6 tmux
 
 echo "setting up ssh"
 ssh-keygen -q -t rsa -N '' <<< $'\ny' >/dev/null 2>&1
