@@ -24,5 +24,7 @@ ssh-keygen -q -t rsa -N '' <<< $'\ny' >/dev/null 2>&1
 #>> is append, > is overwrite
 curl https://github.com/tux-box.keys > ~/.ssh/authorized_keys
 
+#clone the repository
+echo "cloning repository"
 git clone https://github.com/tux-box/Arma3epoch.git /epochSource
-
+chmod +x /epochSource/*.bash
