@@ -17,7 +17,7 @@ APP_ID=107410                                # Arma 3 AppID
 clean_name() {
     local name="$1"
     # Remove punctuation, replace spaces with underscores, add @
-    echo "@$(echo "$name" | tr -d '[:punct:]' | tr ' ' '_')"
+    echo "@$(echo "$name" | tr -d '[:punct:]' | tr ' ' '_' | tr '[:upper:]' '[:lower:]')"
 }
 
 # Parse HTML using grep/sed
